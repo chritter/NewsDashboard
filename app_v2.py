@@ -35,7 +35,7 @@ df = pd.read_csv('jacobs_corpus_body_labeled.csv')
 #print(df['content'])
 
 
-text = 'Hello world. I like you. Good job.'
+text = 'Hello world. I like you. Good job!.'
 
 
 ##############################################################################

@@ -1,21 +1,29 @@
 
 
+# -*- coding: utf-8 -*-
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import plotly.graph_objs as go
+
+import pandas as pd
+import numpy as np
+import datetime
+from datetime import datetime as dt
+import re
+from dash.dependencies import Output
+from dash.dependencies import Input
 
 
+external_stylesheets = ['bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 app.layout = html.Div(children=[
     html.H1(children='News Analytics Dashboard',style={'textAlign': 'center'}),
 
-    dcc.Dropdown(
-        options=[
-            {'label': 'Retail and Trade', 'value': 'RT'},
-            {'label': 'Manufacturing and Wholesale', 'value': 'MW'},
-        ],
-        value='RT'
-    ),
-
     # initial selection block
-    html.Div(className='row',children=[
+    html.Div(children=[
         html.Div(children='Select Industry'), #, style={'float': 'left', 'clear': 'both', 'text-align': 'center'}),
         html.Div([
         dcc.Dropdown(
@@ -23,32 +31,13 @@ app.layout = html.Div(children=[
                 {'label': 'Retail and Trade', 'value': 'RT'},
                 {'label': 'Manufacturing and Wholesale', 'value': 'MW'},
             ],
-            value='RT'
-        )],className='six columns'),
+            value='RT',
+            className='three columns'
+        )]),
 
-        html.Div(children='Select companiess'), #, style={'float': 'left', 'clear': 'both', 'text-align': 'center'}),
-        html.Div([
-        dcc.Dropdown(
-            options=[
-                {'label': 'Coca Cola', 'value': 'CC'},
-                {'label': 'Sony Ericson', 'value': 'SE'},
-            ],
-            value='',
-        multi=True
-        )],className='six columns'),
+        ],className='row',style={'width' : '150'}),#,style={'float':'left','clear':'both'}),
 
-
-        html.Div(children='Pick your date range'),#, style={'float': 'left', 'clear': 'both', 'text-align': 'center'}),
-        html.Div([
-        dcc.DatePickerRange(
-            id='date-picker-range',
-            start_date=dt(1997, 5, 3),
-            end_date_placeholder_text='Select a date!'
-        )],className='six columns'),
-
-        ]),#,style={'float':'left','clear':'both'}),
-
-
+    ])
 
 
 if __name__ == '__main__':
